@@ -1,0 +1,62 @@
+/* src/index.css */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  text-align: center;
+}
+
+.word-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px;
+}
+
+.word-button {
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.word-button:hover {
+  background-color: #e0e0e0;
+}
+
+.category-group {
+  margin: 20px;
+}
+
+.grouped-word {
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: #d0d0ff;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.grouped-word:hover {
+  background-color: #b0b0ff;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #aaa;
+}
+
+.group-list {
+  margin: 20px;
+}
