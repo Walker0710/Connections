@@ -1,28 +1,37 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import GamePage from './pages/GamePage';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-import { AuthProvider } from './context/AuthContext';
-import { GameProvider } from './context/GameContext';
-import './styles/App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import Game from './component/Game';
+import Login from './component/Login';
+import Register from './component/Register';
+import Navbar from './component/Navbar';
+import Home from './pages/Home';
+import Profile from './component/Profile';
 
-const App = () => {
+function AppContent() {
+  const location = useLocation();
+  const hideNavbarAndFooter = location.pathname === '/login' || location.pathname === '/register';
   return (
-    <Router>
-      <AuthProvider>
-        <GameProvider>
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/game" component={GamePage} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/signup" component={SignupPage} />
-          </Switch>
-        </GameProvider>
-      </AuthProvider>
-    </Router>
+    <>
+      {!hideNavbarAndFooter && <Navbar />}
+      <Routes>
+        <Route path='/' exact element={<Home />} />
+        <Route path='/game' exact element={<Game />} />
+        <Route path='/login' exact element={<Login />} />
+        <Route path='/register' exact element={<Register />} />
+        <Route path='/profile' exact element={<Profile />} />
+      </Routes>
+    </>
   );
-};
+}
+
+function App() {
+  return (
+    <>
+      <Router>
+        <AppContent />
+      </Router>
+    </>
+  );
+}
 
 export default App;

@@ -1,0 +1,61 @@
+.home-all {
+    background: linear-gradient(to bottom, #2b4560, #ececec);
+    min-height: 100vh; 
+    width: 100%;
+    color: #ffffff;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-heading {
+    font-family: "Kalam", cursive;
+    font-size: 60px;
+}
+
+.home-content {
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+}
+
+.btns {    
+    padding: 8px 20px;
+    border-radius: 30px;
+    width: 150px;
+    height: 40px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btns-play {
+    color: #fff;
+    background-color: #242424;
+    margin-bottom: 30px;
+}
+
+.btns-below {
+    color: #242424;
+    background: transparent;
+    border: #242424 solid 0.3px;
+}
+
+.btns-play:hover {
+    transition: all 0.5s ease-out;
+    background: #fff;
+    color: #242424;
+    transition: 250ms;
+}
+
+.home-content-small {
+    font-family: "Playfair Display", serif;
+    font-size: 16px; 
+}
+
+.btns-below:hover {
+    transition: all 0.5s ease-out;
+    background: #242424;
+    color: #fff;
+    transition: 250ms;
+}
