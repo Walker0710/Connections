@@ -1,9 +1,48 @@
-.game-all {
+.game-time-show {
+    display: flex;
+    align-items: center;
+    /* background-color: #94d2bd; */
+    background-image: url(../assets/Game4.jpg);
+    /* background-position: right 10px center;  */
+    width: 1850px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    height: 250px;
+    padding-top: -20px;
+}
+
+.game-time-show .date {
+    margin-top: 160px;
+    margin-left: 30px;
+    font-size: 30px;
+    color: #fff;
+}
+
+.game-time-show h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 70px;
+    margin-left: 50px;
+    margin-top: 140px;
+    color: #fff;
+}
+
+.game-grid-all {
     text-align: center;
-    background-color: #0f4c5c;
+    /* background-color: #0f4c5c; */
+    background-image: url(../assets/Game1.jpeg);
     background-size: cover;
-    width: 100%;
-    padding-top: 250px;
+    width: 1850px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 140px;
+    padding-bottom: 80px;
+    height: 640px;
+}
+
+.game-heading {
+    font-size: 60px;
+    color: #ccc;
 }
 
 .grid {
@@ -14,20 +53,31 @@
 }
 
 .word {
-    background-color: #94d2bd;
+    font-family: "Poppins", sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    justify-content: center;
+    /* background-color: #94d2bd; */
+    background-color: #d9d9d9;
     margin: 5px;
-    padding: 10px 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 45px;
+    padding-left: 45px;
     border-radius: 5px;
     cursor: pointer;
     user-select: none;
 }
 
-.shuffle-button {
-    background-color: #ffd166;
-}
-
 .word.selected {
     background-color: #d1e7dd;
+}
+
+.game-message {
+    font-family: "Poppins", sans-serif;
+    color: #ccc;
+    font-size: 17px;
+    font-weight: 500;
 }
 
 button {
@@ -41,12 +91,43 @@ button {
 button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+} 
+
+
+.correct-groups {
+    margin-top: 20px;
+    width: 740px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.game-heading {
-    font-size: 60px;
+.group-display {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    height: 70px;
+    color: black;
+    padding: 10px;
+    margin: 10px 0;
+    align-items: center;
+    justify-content: center;
 }
 
-.game-message {
-    padding-bottom: 210px;
+.group-display.fruits {
+    background-color: #5f0f40; 
 }
+
+.group-display.colors {
+    background-color: #9a031e; 
+}
+
+.group-display.animals {
+    background-color: #fb8b24; 
+}
+
+.group-display.vehicles {
+    background-color: #e36414; 
+}
+
+
+

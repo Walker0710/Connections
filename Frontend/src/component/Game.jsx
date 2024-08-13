@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Game.css';
+import { Button } from './Button';
 
 const Game = () => {
     const [words, setWords] = useState([]);
     const [selectedWords, setSelectedWords] = useState([]);
     const [correctGroups, setCorrectGroups] = useState([]);
     const [groups, setGroups] = useState({});
-    const [message, setMessage] = useState('Nice');
+    const [message, setMessage] = useState('');
     const [gameCompleted, setGameCompleted] = useState(false);
     const [lives, setLives] = useState(4);
     const [userStats, setUserStats] = useState({ streak: 0, maxStreak: 0, completed: 0, wins: 0 });
@@ -19,17 +20,17 @@ const Game = () => {
             axios.get('http://localhost:5000/api/user/check-can-play', {
                 headers: { 'Authorization': `Bearer ${token}` }
             })
-            .then(response => {
-                setCanPlay(response.data.canPlay);
-                if (!response.data.canPlay) {
-                    showSolution(response.data.words, response.data.groups);
-                } else {
-                    fetchGameData();
-                }
-            })
-            .catch(error => {
-                console.error('Error checking play status:', error);
-            });
+                .then(response => {
+                    setCanPlay(response.data.canPlay);
+                    if (!response.data.canPlay) {
+                        showSolution(response.data.words, response.data.groups);
+                    } else {
+                        fetchGameData();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking play status:', error);
+                });
         } else {
             fetchGameData();
         }
@@ -76,12 +77,12 @@ const Game = () => {
             axios.post('http://localhost:5000/api/user/update-stats', { win }, {
                 headers: { 'Authorization': `Bearer ${token}` }
             })
-            .then(response => {
-                setUserStats(response.data);
-            })
-            .catch(error => {
-                console.error('Error updating user stats:', error);
-            });
+                .then(response => {
+                    setUserStats(response.data);
+                })
+                .catch(error => {
+                    console.error('Error updating user stats:', error);
+                });
         }
     };
 
@@ -100,7 +101,7 @@ const Game = () => {
         for (let groupName in groups) {
             const groupWords = groups[groupName];
             if (selectedWords.every(word => groupWords.includes(word)) && selectedWords.length === 4) {
-                setCorrectGroups([...correctGroups, ...selectedWords]);
+                setCorrectGroups([...correctGroups, { groupName, words: selectedWords }]);
                 setWords(words.filter(word => !selectedWords.includes(word)));
                 setMessage(`You found a group: ${groupName}`);
                 foundGroup = true;
@@ -120,50 +121,85 @@ const Game = () => {
 
         setSelectedWords([]);
 
-        if (correctGroups.length + 4 === Object.keys(groups).length * 4) {
+        if (correctGroups.length + 1 === Object.keys(groups).length) {
             setGameCompleted(true);
             setMessage('Congratulations! You have completed the game!');
             updateStats(true);
         }
     };
 
+    const currentDate = new Date().toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    });
+
     return (
         <div className="game-all">
-            <h1 className='game-heading'>Connections Game</h1>
-            {canPlay ? (
-                <>
-                    <button className='shuffle-button' onClick={handleShuffle} disabled={gameCompleted}>Shuffle</button>
-                    <div className="grid">
-                        {words.map(word => (
-                            <div
-                                key={word}
-                                className={`word ${selectedWords.includes(word) ? 'selected' : ''}`}
-                                onClick={() => handleWordClick(word)}
-                            >
-                                {word}
-                            </div>
-                        ))}
-                    </div>
-                    <button onClick={checkSelection} disabled={selectedWords.length !== 4 || gameCompleted}>
-                        Check Group
-                    </button>
-                {message && <p className='game-message'>{message}</p>}
-                </>
-            ) : (
-                <>
-                <p>The game has already been completed. Please come back tomorrow!</p>
-                <div className="grid">
-                    {words.map(word => (
-                        <div
-                            key={word}
-                            className="word"
-                        >
-                            {word}
+            <div className="game-time-show">
+                <h1>Connections</h1>
+                <p className="date">{currentDate}</p>
+            </div>
+            <div className='game-grid-all'>
+                {canPlay ? (
+                    <>
+                        {!gameCompleted && (
+                            <>
+                                <Button
+                                    className='btns game-shuffle'
+                                    buttonStyle='btn--outline'
+                                    buttonSize='btn--large'
+                                    onClick={handleShuffle}
+                                >
+                                    Shuffle
+                                </Button>
+                                <div className="grid">
+                                    {words.map(word => (
+                                        <div
+                                            key={word}
+                                            className={`word ${selectedWords.includes(word) ? 'selected' : ''}`}
+                                            onClick={() => handleWordClick(word)}
+                                        >
+                                            {word}
+                                        </div>
+                                    ))}
+                                </div>
+                                <Button
+                                    className='btns'
+                                    buttonStyle='btn--outline'
+                                    buttonSize='btn--large'
+                                    onClick={checkSelection}
+                                >
+                                    Submit
+                                </Button>
+                            </>
+                        )}
+                        {message && <p className='game-message'>{message}</p>}
+                        <div className="correct-groups">
+                            {correctGroups.map((group, index) => (
+                                <div key={index} className={`group-display ${group.groupName.toLowerCase()}`}>
+                                    <h2><strong>{group.groupName}</strong></h2>
+                                    <p>{group.words.join(', ')}</p>
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
-            </>
-            )}
+                    </>
+                ) : (
+                    <>
+                        <p>The game has already been completed. Please come back tomorrow!</p>
+                        <div className="grid">
+                            {words.map(word => (
+                                <div
+                                    key={word}
+                                    className="word"
+                                >
+                                    {word}
+                                </div>
+                            ))}
+                        </div>
+                    </>
+                )}
+            </div>
         </div>
     );
 };
