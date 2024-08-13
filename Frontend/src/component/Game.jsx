@@ -129,10 +129,10 @@ const Game = () => {
 
     return (
         <div className="game-all">
-            <h1>Connections Game</h1>
+            <h1 className='game-heading'>Connections Game</h1>
             {canPlay ? (
                 <>
-                    <button onClick={handleShuffle} disabled={gameCompleted}>Shuffle</button>
+                    <button className='shuffle-button' onClick={handleShuffle} disabled={gameCompleted}>Shuffle</button>
                     <div className="grid">
                         {words.map(word => (
                             <div
@@ -147,7 +147,7 @@ const Game = () => {
                     <button onClick={checkSelection} disabled={selectedWords.length !== 4 || gameCompleted}>
                         Check Group
                     </button>
-                {message && <p>{message}</p>}
+                {message && <p className='game-message'>{message}</p>}
                 </>
             ) : (
                 <>

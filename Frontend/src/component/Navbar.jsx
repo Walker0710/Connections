@@ -27,7 +27,7 @@ function Navbar() {
             {isAuthenticated ? (
               <>
                 <li className='nav-item'>
-                  <a href='/profile' className='nav-links'>Profile</a>
+                  <a href='/profile' className='nav-links'>Stats</a>
                 </li>
                 <li className='nav-item'>
                   <a onClick={handleLogout} className='nav-links'>Logout</a>

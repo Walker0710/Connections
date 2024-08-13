@@ -1,10 +1,10 @@
-
 .navbar {
     position: fixed;
     z-index: 999;
     font-size: 1.2rem;
-    background: transparent;
+    background: white;
     width: 100%;
+    margin-top: -8px;
 }
 
 .navbar-container {
@@ -43,8 +43,9 @@
 
 .nav-links {
     /* color: #bd9f67; */
-    color: #fff;
+    color: black;
     text-decoration: none;
+    font-weight: 700;
 }
 
 .nav-links:hover {

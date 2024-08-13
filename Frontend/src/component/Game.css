@@ -1,7 +1,9 @@
 .game-all {
     text-align: center;
-    margin: 20px;
-    padding-top: 200px;
+    background-color: #0f4c5c;
+    background-size: cover;
+    width: 100%;
+    padding-top: 250px;
 }
 
 .grid {
@@ -12,12 +14,16 @@
 }
 
 .word {
-    background-color: #f0f0f0;
+    background-color: #94d2bd;
     margin: 5px;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     user-select: none;
+}
+
+.shuffle-button {
+    background-color: #ffd166;
 }
 
 .word.selected {
@@ -35,4 +41,12 @@ button {
 button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+
+.game-heading {
+    font-size: 60px;
+}
+
+.game-message {
+    padding-bottom: 210px;
 }

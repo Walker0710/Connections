@@ -24,7 +24,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api/game', gameRoutes);
 app.use('/api/user', userRoutes);
 
-
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
