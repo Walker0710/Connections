@@ -1,3 +1,7 @@
+.full-nav {
+    width: 100%;
+}
+
 .navbar {
     position: fixed;
     z-index: 999;
@@ -12,7 +16,8 @@
     justify-content: center;
     align-items: center;
     height: 80px;
-    max-width: 1500px;
+    /* max-width: 1500px; */
+
     gap: 550px;
     margin-left: 775px;
     font-family: 'Hanken Grotesk', sans-serif;
@@ -38,7 +43,7 @@
     justify-content: end;
     padding-bottom: 50px;
     margin-left: 420px;
-    margin-top: 50px;
+    margin-top: 68px;
 }
 
 .nav-links {

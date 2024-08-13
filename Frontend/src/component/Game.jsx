@@ -7,7 +7,7 @@ const Game = () => {
     const [selectedWords, setSelectedWords] = useState([]);
     const [correctGroups, setCorrectGroups] = useState([]);
     const [groups, setGroups] = useState({});
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState('Nice');
     const [gameCompleted, setGameCompleted] = useState(false);
     const [lives, setLives] = useState(4);
     const [userStats, setUserStats] = useState({ streak: 0, maxStreak: 0, completed: 0, wins: 0 });
