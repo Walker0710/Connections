@@ -106,6 +106,7 @@ button:disabled {
 }
 
 .group-display {
+    font-family: "Playfair Display", serif;
     display: flex;
     flex-direction: column;
     border-radius: 5px;
@@ -117,20 +118,37 @@ button:disabled {
     justify-content: center;
 }
 
+.group-display-names {
+    margin-top: -7px;
+    font-weight: 400;
+}
+
+.the-game-has-been {
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    color: #fff;
+}
+
+.game-message {
+    font-family: "Playfair Display", serif;
+    font-size: 35px;
+    color: #fff;
+}
+
 .group-display.fruits {
-    background-color: #5f0f40; 
+    background-color: #d8e2dc; 
 }
 
 .group-display.colors {
-    background-color: #9a031e; 
+    background-color: #ffe5d9; 
 }
 
 .group-display.animals {
-    background-color: #fb8b24; 
+    background-color: #ffcad4; 
 }
 
 .group-display.vehicles {
-    background-color: #e36414; 
+    background-color: #9d8189; 
 }
 
 

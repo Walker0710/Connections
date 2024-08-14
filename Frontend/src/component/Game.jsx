@@ -179,14 +179,14 @@ const Game = () => {
                             {correctGroups.map((group, index) => (
                                 <div key={index} className={`group-display ${group.groupName.toLowerCase()}`}>
                                     <h2><strong>{group.groupName}</strong></h2>
-                                    <p>{group.words.join(', ')}</p>
+                                    <p className='group-display-names'>{group.words.join(', ')}</p>
                                 </div>
                             ))}
                         </div>
                     </>
                 ) : (
                     <>
-                        <p>The game has already been completed. Please come back tomorrow!</p>
+                        <p className='the-game-has-been'>The game has already been completed. Please come back tomorrow!</p>
                         <div className="grid">
                             {words.map(word => (
                                 <div
@@ -205,3 +205,19 @@ const Game = () => {
 };
 
 export default Game;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

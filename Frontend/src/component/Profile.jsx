@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Profile.css'
+import pic from '../assets/profile.jpeg';
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -22,15 +23,27 @@ function Profile() {
 
   return (
     <div className='profile-all'>
-
-      <h1 className='profile-username'>Username : {user.username}</h1>
-      <p className='profile-email'>Email : {user.email}</p>
-      <p className='profile-completed'>Completed : {user.completed}</p>
-      <p className='profile-winPer'>Win Percentage : {winPer.toFixed(2)}%</p>
-      <p className='profile-streak'>Streak : {user.streak}</p>
-      <p className='profile-streak'>Max Streak : {user.maxStreak}</p>
+      <img className='profile-background' src={pic} alt="back" />
+      <div className='profile-back-color'></div>
+      <div className='profile-upper'>
+        <h1 className='profile-heading'>Statistics</h1>
+        <div className='profile-content'>
+          <div className='profile-user'>
+            <h1 className='profile-username'>{user.username}</h1>
+            <p className='profile-email'>{user.email}</p>
+          </div>
+          <div className='profile-stats'>
+            <p className='profile-stats-detail'>Completed : {user.completed}</p>
+            <p className='profile-stats-detail'>Win Percentage : {winPer.toFixed(2)}%</p>
+            <p className='profile-stats-detail'>Streak : {user.streak}</p>
+            <p className='profile-stats-detail'>Max Streak : {user.maxStreak}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
+
+
 }
 
 export default Profile;
