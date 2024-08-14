@@ -9,7 +9,7 @@ const AuthForm = ({ type, onLogin }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:5000/${type}`, { username, password });
+            const response = await axios.post(`https://synapse-backend-nv7c.onrender.com/${type}`, { username, password });
             if (type === 'login') {
                 localStorage.setItem('token', response.data.token);
                 onLogin();

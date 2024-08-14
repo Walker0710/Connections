@@ -17,7 +17,7 @@ const Game = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.get('http://localhost:5000/api/user/check-can-play', {
+            axios.get('https://synapse-backend-nv7c.onrender.com/api/user/check-can-play', {
                 headers: { 'Authorization': `Bearer ${token}` }
             })
                 .then(response => {
@@ -37,7 +37,7 @@ const Game = () => {
     }, []);
 
     const fetchGameData = () => {
-        axios.get('http://localhost:5000/api/game/game-data')
+        axios.get('https://synapse-backend-nv7c.onrender.com/api/game/game-data')
             .then(response => {
                 const shuffledWords = shuffleArray(response.data.words);
                 setWords(shuffledWords);
@@ -74,7 +74,7 @@ const Game = () => {
     const updateStats = (win) => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.post('http://localhost:5000/api/user/update-stats', { win }, {
+            axios.post('https://synapse-backend-nv7c.onrender.com/api/user/update-stats', { win }, {
                 headers: { 'Authorization': `Bearer ${token}` }
             })
                 .then(response => {

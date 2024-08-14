@@ -7,7 +7,7 @@ const Streak = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.post('http://localhost:5000/update-streak', {}, {
+            axios.post('https://synapse-backend-nv7c.onrender.com/update-streak', {}, {
                 headers: { 'Authorization': `Bearer ${token}` }
             }).then(response => {
                 setStreak(response.data.streak);
