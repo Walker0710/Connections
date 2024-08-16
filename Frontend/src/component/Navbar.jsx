@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css'
+import Logo from '../assets/logo.png';
 
 function Navbar() {
   const isAuthenticated = !!localStorage.getItem('token');
@@ -16,7 +17,7 @@ function Navbar() {
       <div className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo'>
-            {/* <img className='logo-yoo' src={Logo} alt="logo" /> */}
+            <img className='logo-yoo' src={Logo} alt="logo" />
             <i class='fab fa-typo3' />
           </Link>
 
