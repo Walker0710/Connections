@@ -21,10 +21,31 @@ function Profile() {
 
   const winPer = (user.wins / (user.completed)) * 100;
 
+  // return (
+  //   <div className='profile-all'>
+  //     <img className='profile-background' src={pic} alt="back" />
+  //     <div className='profile-back-color'></div>
+  //     <div className='profile-upper'>
+  //       <h1 className='profile-heading'>Statistics</h1>
+  //       <div className='profile-content'>
+  //         <div className='profile-user'>
+  //           <h1 className='profile-username'>{user.username}</h1>
+  //           <p className='profile-email'>{user.email}</p>
+  //         </div>
+  //         <div className='profile-stats'>
+  //           <p className='profile-stats-detail'>Completed : {user.completed}</p>
+  //           <p className='profile-stats-detail'>Win Percentage : {winPer.toFixed(2)}%</p>
+  //           <p className='profile-stats-detail'>Streak : {user.streak}</p>
+  //           <p className='profile-stats-detail'>Max Streak : {user.maxStreak}</p>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
+
+
   return (
     <div className='profile-all'>
-      <img className='profile-background' src={pic} alt="back" />
-      <div className='profile-back-color'></div>
       <div className='profile-upper'>
         <h1 className='profile-heading'>Statistics</h1>
         <div className='profile-content'>
@@ -33,16 +54,15 @@ function Profile() {
             <p className='profile-email'>{user.email}</p>
           </div>
           <div className='profile-stats'>
-            <p className='profile-stats-detail'>Completed : {user.completed}</p>
+            <p className='profile-stats-detail profile-stats-detail-first'>Completed : {user.completed}</p>
             <p className='profile-stats-detail'>Win Percentage : {winPer.toFixed(2)}%</p>
             <p className='profile-stats-detail'>Streak : {user.streak}</p>
-            <p className='profile-stats-detail'>Max Streak : {user.maxStreak}</p>
+            <p className='profile-stats-detail profile-stats-detail-last'>Max Streak : {user.maxStreak}</p>
           </div>
         </div>
       </div>
     </div>
   );
-
 
 }
 

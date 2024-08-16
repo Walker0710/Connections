@@ -1,4 +1,4 @@
-.profile-all {
+/* .profile-all {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-left: auto;
@@ -26,6 +26,7 @@
     color: #333;
     margin-bottom: 20px;
     font-weight: bold;
+    font-family: "Playfair Display", serif;
   }
   
   .profile-content {
@@ -83,4 +84,61 @@
     margin-left: 50px;
     font-size: 20px;
     font-family: "Playfair Display", serif;
+  } */
+
+  .profile-all {
+    background-color: #90e0ef;
+    height: 100vh;
+  }
+
+  .profile-upper {
+    padding-top: 190px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffe5d9;
+    align-items: center;
+  }
+
+  .profile-heading {
+    font-family: "Playfair Display", serif;
+    margin-top: 50px;
+  }
+
+  .profile-user {
+    font-family: "Playfair Display", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: black solid 0.5px;
+    width: 600px;
+  }
+
+  .profile-email {
+    margin-top: -10px;
+    margin-bottom: 50px;
+  }
+
+  .profile-stats {
+    font-family: "Playfair Display", serif;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 160px; */
+    background-color: #ffcad4;
+  }
+
+  .profile-stats-detail {
+    margin-left: 110px;
+  }
+
+  .profile-stats-detail-first {
+    margin-top: 50px;
+  }
+
+  .profile-stats-detail-last {
+    margin-bottom: 50px;
   }
