@@ -15,7 +15,7 @@ connectDB();
 
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://synapse-iny7.onrender.com',
     methods: 'GET,POST',
     credentials: true,
 }));
