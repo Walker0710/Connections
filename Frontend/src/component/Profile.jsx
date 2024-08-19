@@ -8,7 +8,7 @@ function Profile() {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const response = await axios.get('https://connections-backend-uo7c.onrender.com/api/auth/profile', {
+      const response = await axios.get('http://localhost:5000/api/auth/profile', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setUser(response.data);

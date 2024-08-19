@@ -17,7 +17,7 @@ const Game = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.get('https://connections-backend-uo7c.onrender.com/api/user/check-can-play', {
+            axios.get('http://localhost:5000/api/user/check-can-play', {
                 headers: { 'Authorization': `Bearer ${token}` }
             })
                 .then(response => {
@@ -37,7 +37,7 @@ const Game = () => {
     }, []);
 
     const fetchGameData = () => {
-        axios.get('https://connections-backend-uo7c.onrender.com/api/game/game-data')
+        axios.get('http://localhost:5000/api/game/game-data')
             .then(response => {
                 const shuffledWords = shuffleArray(response.data.words);
                 setWords(shuffledWords);
@@ -71,10 +71,10 @@ const Game = () => {
         }
     };
 
-    const updateStats = (win) => {
+    const updateStats = (win, correctGroupsData = []) => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.post('https://connections-backend-uo7c.onrender.com/api/user/update-stats', { win }, {
+            axios.post('http://localhost:5000/api/user/update-stats', { win, correctGroups: correctGroupsData }, {
                 headers: { 'Authorization': `Bearer ${token}` }
             })
                 .then(response => {
@@ -89,9 +89,20 @@ const Game = () => {
     const showSolution = (words = null, groups = null) => {
         setMessage('Game over! Here are the correct groups:');
         setGameCompleted(true);
-        if (words && groups) {
+
+        if (groups) {
+            const completedGroups = [];
+            for (let groupName in groups) {
+                completedGroups.push({ groupName, words: groups[groupName] });
+            }
+            setCorrectGroups(completedGroups);
+
+            // Save the correct groups in the server for future reference
+            updateStats(false, completedGroups);
+        }
+
+        if (words) {
             setWords(words);
-            setGroups(groups);
         }
     };
 
@@ -101,10 +112,14 @@ const Game = () => {
         for (let groupName in groups) {
             const groupWords = groups[groupName];
             if (selectedWords.every(word => groupWords.includes(word)) && selectedWords.length === 4) {
-                setCorrectGroups([...correctGroups, { groupName, words: selectedWords }]);
+                const newCorrectGroups = [...correctGroups, { groupName, words: selectedWords }];
+                setCorrectGroups(newCorrectGroups);
                 setWords(words.filter(word => !selectedWords.includes(word)));
                 setMessage(`You found a group: ${groupName}`);
                 foundGroup = true;
+
+                // Update stats with the new group
+                updateStats(true, newCorrectGroups);
                 break;
             }
         }
@@ -114,8 +129,8 @@ const Game = () => {
             setMessage(`This is not a valid group. You have ${lives - 1} lives left.`);
 
             if (lives - 1 === 0) {
-                showSolution();
-                updateStats(false);
+                showSolution(words, groups);
+                updateStats(false, correctGroups);
             }
         }
 
@@ -124,7 +139,7 @@ const Game = () => {
         if (correctGroups.length + 1 === Object.keys(groups).length) {
             setGameCompleted(true);
             setMessage('Congratulations! You have completed the game!');
-            updateStats(true);
+            updateStats(true, correctGroups);
         }
     };
 
@@ -187,13 +202,11 @@ const Game = () => {
                 ) : (
                     <>
                         <p className='the-game-has-been'>The game has already been completed. Please come back tomorrow!</p>
-                        <div className="grid">
-                            {words.map(word => (
-                                <div
-                                    key={word}
-                                    className="word"
-                                >
-                                    {word}
+                        <div className="correct-groups">
+                            {correctGroups.map((group, index) => (
+                                <div key={index} className={`group-display ${group.groupName.toLowerCase()}`}>
+                                    <h2><strong>{group.groupName}</strong></h2>
+                                    <p className='group-display-names'>{group.words.join(', ')}</p>
                                 </div>
                             ))}
                         </div>
@@ -205,19 +218,3 @@ const Game = () => {
 };
 
 export default Game;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
