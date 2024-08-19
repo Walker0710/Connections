@@ -3,12 +3,14 @@ import axios from 'axios';
 import './Profile.css'
 import pic from '../assets/profile.jpeg';
 
+const BACKEND_URL = 'https://connections-backend-uo7c.onrender.com';
+
 function Profile() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const response = await axios.get('http://localhost:5000/api/auth/profile', {
+      const response = await axios.get( BACKEND_URL + '/api/auth/profile', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setUser(response.data);

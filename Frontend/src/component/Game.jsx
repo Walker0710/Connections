@@ -3,6 +3,8 @@ import axios from 'axios';
 import './Game.css';
 import { Button } from './Button';
 
+const BACKEND_URL = 'https://connections-backend-uo7c.onrender.com';
+
 const Game = () => {
     const [words, setWords] = useState([]);
     const [selectedWords, setSelectedWords] = useState([]);
@@ -17,7 +19,7 @@ const Game = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.get('http://localhost:5000/api/user/check-can-play', {
+            axios.get( BACKEND_URL + '/api/user/check-can-play', {
                 headers: { 'Authorization': `Bearer ${token}` }
             })
                 .then(response => {
@@ -37,7 +39,7 @@ const Game = () => {
     }, []);
 
     const fetchGameData = () => {
-        axios.get('http://localhost:5000/api/game/game-data')
+        axios.get( BACKEND_URL + '/api/game/game-data')
             .then(response => {
                 const shuffledWords = shuffleArray(response.data.words);
                 setWords(shuffledWords);
@@ -74,7 +76,7 @@ const Game = () => {
     const updateStats = (win, correctGroupsData = []) => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.post('http://localhost:5000/api/user/update-stats', { win, correctGroups: correctGroupsData }, {
+            axios.post( BACKEND_URL + '/api/user/update-stats', { win, correctGroups: correctGroupsData }, {
                 headers: { 'Authorization': `Bearer ${token}` }
             })
                 .then(response => {

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Register.css';
 
+const BACKEND_URL = 'https://connections-backend-uo7c.onrender.com';
+
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -13,7 +15,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
+      const res = await axios.post( BACKEND_URL + '/api/auth/register', { username, email, password });
       localStorage.setItem('token', res.data.token);
       navigate('/login');
     } catch (err) {
