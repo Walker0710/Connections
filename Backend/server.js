@@ -15,7 +15,7 @@ connectDB();
 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://walker0710.github.io',
+    origin: 'https://synapses123.netlify.app',
     methods: 'GET,POST',
     credentials: true,
 }));
