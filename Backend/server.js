@@ -15,7 +15,7 @@ connectDB();
 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://synapses123.netlify.app',
+    origin: 'http://localhost:5173',
     methods: 'GET,POST',
     credentials: true,
 }));

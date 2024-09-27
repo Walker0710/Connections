@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Register.css';
 
-const BACKEND_URL = 'https://connections-backend-uo7c.onrender.com';
+const BACKEND_URL = 'http://localhost:5000';
 
 const Register = () => {
   const [username, setUsername] = useState('');

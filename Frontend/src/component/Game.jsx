@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Game.css';
 import { Button } from './Button';
 
-const BACKEND_URL = 'https://connections-backend-uo7c.onrender.com';
+const BACKEND_URL = 'http://localhost:5000';
 
 const Game = () => {
     const [words, setWords] = useState([]);

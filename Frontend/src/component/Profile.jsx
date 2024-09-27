@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Profile.css'
 import pic from '../assets/profile.jpeg';
 
-const BACKEND_URL = 'https://connections-backend-uo7c.onrender.com';
+const BACKEND_URL = 'http://localhost:5000';
 
 function Profile() {
   const [user, setUser] = useState(null);

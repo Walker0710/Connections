@@ -38,17 +38,15 @@ exports.updateStats = async (req, res) => {
 exports.checkCanPlay = async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
-        const today = new Date().setHours(0, 0, 0, 0); // Set time to midnight
+        const today = new Date().setHours(0, 0, 0, 0); 
 
         if (user.lastSolved && new Date(user.lastSolved).setHours(0, 0, 0, 0) === today) {
-            // User has already played today, return the solution grid
             return res.status(200).json({
                 canPlay: false,
-                words: gameData.words, // Unshuffled words (the solution grid)
+                words: gameData.words, 
                 groups: gameData.groups
             });
         } else {
-            // User can play the game today
             return res.status(200).json({ canPlay: true });
         }
     } catch (error) {
